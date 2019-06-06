@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Note</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background: #FFFFFF;
+        }
+
+        header {
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid #B1B1B1;
+        }
+        header > form > .mind{
+            color: #ff6600;
+            font-size: 20px;
+        }
+       /* .area textarea{
+            height: 39px;
+            width: 50%;
+            float: left;
+            font-size: 21px;
+            line-height: 39px;
+            outline: none;
+        }
+        .area button{
+            float: left;
+            height: 39px;
+            background: #ff6600;
+            width: 59px;
+            color: #FFFFFF;
+        }*/
+        form{
+            width: 896px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+        }
+        form > input{
+            height: 30px;
+            border-bottom: 1px solid #B1B1B1;
+            padding: 6px 12px;
+            font-size: 14px;
+            outline: none;
+            border-radius: 3px;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        main {
+            width: 900px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .tab {
+            height: 40px;
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .tab > li {
+            height: 100%;
+            flex-grow: 1;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .tab > li > span {
+            cursor: pointer;
+        }
+
+        .tab > li.hot {
+            /*background: #ff6600;*/
+            color: #FFFFFF;
+            transition: .5s;
+        }
+
+        li.hot:nth-child(1) ~ .bac {
+            transform: translate(0, 0);
+        }
+
+        li.hot:nth-child(2) ~ .bac {
+            transform: translate(102%, 0);
+        }
+
+        li.hot:nth-child(3) ~ .bac {
+            transform: translate(210%, 0);
+        }
+
+        .bac {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 284px;
+            height: 100%;
+            z-index: -1;
+            background: #ff6600;
+            transition: .5s;
+        }
+
+        .dimension > li {
+            font-size: 20px;
+            line-height: 3;
+            border-bottom: 1px solid #9A9A9A;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .dimension > li > time {
+            float: right;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .dimension > li >del{
+            text-decoration: none;
+            float: right;
+            position: absolute;
+            font-size: 30px;
+            top: 45px;
+            right: 0;
+            cursor: pointer;
+            transition: all .5s;
+        }
+        .dimension > li >del:hover{
+            color: #3bacfe;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            let tab = document.querySelectorAll('.tab > li');
+            let prev = 0;
+            let type = 'all';
+            let dimension = document.querySelector('.dimension');
+            let todolist = [
+                {
+                    id: 1, content: 'The lowest score was 68 out of a hundred', ctime: '2019/06/04', status: false
+                },
+                {
+                    id: 2, content: 'The quick brown fox jumps over a lazy dog', ctime: '2019/06/05', status: false
+                },
+                {
+                    id: 3, content: 'The quick brown fox jumps over a lazy dog', ctime: '2019/06/06', status: true
+                },
+                {
+                    id: 4,
+                    content: 'Our destiny offers not the cup of despair,but the chalice of opportunity',
+                    ctime: '2019/06/13',
+                    status: false
+                },
+            ];
+            let str = localStorage.getItem('todolist');
+            if (!str){
+                saveData();
+                str = localStorage.getItem('todolist');
+            }
+            todolist = JSON.parse(str);
+            tab.forEach(function (ele, index) {
+                ele.onclick = function () {
+                    tab[prev].classList.remove('hot');
+                    tab[index].classList.add('hot');
+                    prev = index;
+                    type = this.getAttribute('type');
+                    render(filterDate(type));
+                }
+            });
+            dimension.onclick =function (e) {
+                // let arr =[];
+                let target = e.target;
+                let id = target.parentNode.id;
+                if(target.nodeName === 'INPUT'){
+                    let ele = todolist.filter(function (ele) {
+                        return ele.id ==id;
+                    });
+                    let ele1 = ele[0];
+                    ele1.status = target.checked;
+                }else if (target.nodeName === 'DEL'){
+                    console.log(2);
+                    let index = todolist.findIndex(ele=>ele.id == id);
+                    todolist.splice(index,1);
+                    render(filterDate(type));
+                }
+            };
+            /////////////////////////////////////////////////////////////////////////////提交文本
+            let forms = document.forms.dairy;
+            let textBtn = forms.elements[0];
+            let submitBtn = forms.elements[1];
+
+            submitBtn.onclick = function (e) {
+                e.preventDefault();
+                let obj = createObj();
+                todolist.push(obj);
+                forms.reset();
+                render(filterDate(type));
+                saveData()
+            };
+            ////////////////////////////////saveData
+            function saveData() {
+                localStorage.setItem('todolist',JSON.stringify(todolist))
+            }
+            ////////////////////////////////
+            function createObj() {
+                let id = todolist[todolist.length -1].id + 1;
+                console.log(id);
+                let content = textBtn.value;
+                let ctime = new Date().toLocaleDateString();
+                let status = false;
+                return {id,content,ctime,status};
+            }
+            /////////////////////////////////////////////////////////////////////////////
+
+            function filterDate(type){
+                let arr = [];
+
+                switch (type) {
+                    case 'all':
+                        arr = todolist;
+                        break;
+                    case 'done':
+                        arr = todolist.filter(ele=>(!ele.status));
+                        break;
+                    case 'remind':
+                        arr = todolist.filter(function (ele) {
+                            return ele.status;
+                        });
+                        break;
+                }
+                return arr;
+            }
+
+            tab[0].onclick();
+
+            function render(arr) {
+                let html = '';
+                arr.forEach(function (ele, index) {
+                    if (ele.status) {
+                        html += `
+                <li id = ${ele.id}>
+                    <input type="checkbox" checked> <p>${ele.content}</p> <time>${ele.ctime}</time><del>×</del>
+                </li>
+                `
+                    } else {
+                        html += `
+                <li id = ${ele.id}>
+                    <input type="checkbox"> <p>${ele.content}</p> <time>${ele.ctime}</time><del>×</del
+                </li>
+                `;
+                    }
+
+                });
+                dimension.innerHTML = html;
+            }
+        });
+    </script>
+</head>
+<body>
+<header>
+    <!--<ul class="area">
+        <textarea name="" id="" cols="60" rows="2.5" ></textarea>
+        <button>请提交</button>
+    </ul>-->
+    <form action="" name="dairy">
+        <input type="text" placeholder="Please input your mind" name = 'content'>
+        <input type="submit" value="submit">
+        <span class="mind">Try Everything</span>
+    </form>
+</header>
+<main>
+    <ul class="tab">
+        <li class="hot" type="all"><span>全部</span></li>
+        <li type="done"><span>待完成</span></li>
+        <li type="remind"><span>重要提醒</span></li>
+        <div class="bac"></div>
+    </ul>
+    <ul class="dimension">
+        <!-- <li>There must be something wrong!</li>
+         <li>For all the time that rained my para</li>
+         <li>A</li>
+         <li>B</li>
+         <li><textarea name="" id="" cols="30" rows="10"></textarea></li>-->
+    </ul>
+</main>
+</body>
+</html>
