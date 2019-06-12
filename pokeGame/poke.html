@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>poke</title>
+</head>
+<script src = "jquery-3.4.1.js"></script>
+<script src ="Poke.js"></script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        background-image: url("./imgs/pokeBackground.jpg");
+        background-size: 100%;
+    }
+    .box{
+        width:800px;
+        height: 660px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .poke{
+        width: 100px;
+        height: 130px;
+        position: absolute;
+        left: 350px;
+        top: 0;
+        background-size: 100%;
+        border: 3px solid #EF8996;
+    }
+    .active{
+        border:3px solid #ff6600;
+    }
+    button{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #ff6600;
+        color: #fff;
+        position: absolute;
+        left: 410px;
+        bottom: 44px;
+        outline: none;
+        font-size: 24px;
+        line-height: 50px;
+    }
+    .leftBtn{
+        left: 320px;
+    }
+    .content{
+        /*display: block;*/
+        width: 500px;
+        height: 300px;
+        color: #3ffc12;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    .content p:first-child{
+        color: white;
+    }
+     .content p:last-child{
+        color: rebeccapurple;
+    }
+</style>
+<body>
+<div class="box">
+<button class="rightBtn">&gt</button>
+<button class="leftBtn">&lt</button>
+</div>
+<div class="content">
+    <p>游戏名称：扑克连连看</p>
+    <p>游戏规则：从下往上选择两张牌号加起来为14的就能消掉所选牌，被压的牌选不起来，全部消掉即游戏胜利</p>
+    <p>按钮功能：下方左右两个按钮，当所选牌没有加起来够14的牌，通过点击左右按钮适配到目标牌！</p>
+</div>
+</body>
+</html>
