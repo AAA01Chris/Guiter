@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>movie</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .container{
+        width: 1400px;
+        height: 100%;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
+        margin: auto;
+        padding: 50px;
+    }
+    .item{
+        position: absolute;
+        right: 120px;
+        top:120px;
+        width: 120px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #ff6600;
+        z-index: 999;
+        color: white;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        transition: .5s;
+    }
+    .item:hover{
+        background-color: #EF8996;
+    }
+</style>
+<script src="echarts.js"></script>
+<script src="data.js"></script>
+<body>
+<div class="container">
+
+</div>
+<a href="top250.html"><div class="item">点击转换饼图</div></a>
+<script>
+    let container = document.querySelector('.container');
+    let mycharts = echarts.init(container);
+    let selected = {};
+    let series = [];
+    categories.forEach(category=>{
+        let movie = data.filter(ele=>ele[4].includes(category));
+        if(category == '全部'){
+            selected[category] = true;
+        }else{
+            selected[category] = false;
+        }
+        let obj = {
+            name: category,
+            data: category=='全部'? data : movie,
+            type: 'scatter',
+            symbolSize: function (data) {
+                return Math.sqrt(data[0]) / 30;
+            },
+            label: {
+                emphasis: {
+                    show: true,
+                    formatter: function (param) {
+                        return param.data[3];
+                    },
+                    position: 'top'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(25, 100, 150, 0.5)',
+                    shadowOffsetY: 5,
+                    color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                        offset: 0,
+                        color: 'rgb(129, 227, 238)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(25, 183, 207)'
+                    }])
+                }
+            }
+        };
+        series.push(obj);
+    });
+    console.log(selected);
+    console.log(series);
+    let options = {
+        backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+            offset: 0,
+            color: '#f7f8fa'
+        }, {
+            offset: 1,
+            color: '#cdd0d5'
+        }]),
+        title: {
+            text: '豆瓣TOP250',
+            right: 20,
+            top:20,
+        },
+        xAxis: {
+            name:'评论模式',
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            }
+        },
+        yAxis: {
+            name:'评分',
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            },
+            scale: true
+        },
+        legend:{
+            type: 'scroll',
+            data: categories,
+            selected,
+            selectedMode: 'single',
+        },
+        series,
+        tooltip: {
+          trigger: 'item',
+          formatter: function (params) {
+              let data = params.data;
+              return `名字: ${data[3]}<br/>
+                      类型: ${data[4]}<br/>
+                      评分: ${data[1]}
+
+                `
+          }
+        },
+    };
+
+    mycharts.setOption(options);
+</script>
+</body>
+</html>
