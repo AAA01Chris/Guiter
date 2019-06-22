@@ -1,0 +1,70 @@
+@import "base.css";
+header{
+    padding: 0.1rem 0.2rem;
+    float: left;
+    background-color: #EF8996;
+    position: fixed;
+    z-index: 999;
+}
+header > input{
+    width: 7.1rem;
+    font-size: 0.32rem;
+    height: 0.5rem;
+    color: #333333;
+    outline-style: none;
+}
+main{
+    padding-top: 0.88rem;
+}
+section{
+    padding: 0 0.24rem;
+    margin-bottom: 0.1rem;
+}
+h2{
+    font-weight: normal;
+    font-size: 0.2rem;
+    height: 1rem;
+    line-height: 1rem;
+    border-bottom: 0.01rem solid #aaaaaa;
+}
+section > div{
+    height: 1rem;
+    border-bottom: 0.01rem solid #aaaaaa;
+}
+section > div > a{
+    font-size: 0.2rem;
+    line-height: 1rem;
+    width: 100%;
+    height: 100%;
+    color: #333333;
+}
+.aside{
+    width: 0.5rem;
+    height: auto;
+    position: fixed;
+    right: 0.1rem;
+    top:50%;
+    transform: translateY(-50%);
+}
+.aside > li{
+    width: 100%;
+    height: 0.5rem;
+    text-align: center;
+    line-height: 0.5rem;
+    color: #d8bfe3;
+}
+.mind{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: #43c93e;
+    opacity: 0.4;
+    position: fixed;
+    right: 0.2rem;
+    top: 0.86rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.54rem;
+}
