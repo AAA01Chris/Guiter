@@ -1,0 +1,237 @@
+header{
+    width: 100%;
+    height: 0.88rem;
+    padding: 0 0.22rem;
+    box-sizing:border-box;
+    display: flex;
+    justify-content: space-between;
+    line-height: 0.88rem;
+    color: #4ebbfe;
+    font-size: 0.38rem;
+    box-shadow: 0 0.03rem 0.43rem 0 rgba(41,167,255,0.13);
+    position: relative;
+}
+header > a{
+    color: #4ebbfe;
+}
+.noCon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 3.17rem;
+}
+.body1 > .noCon >img{
+    width: 50%;
+}
+.body1 > .noCon >p{
+    font-size: 0.26rem;
+    color: rgba(0,0,0,0.4);
+}
+.body1 > .noCon > a{
+    display: flex;
+    width: 1.96rem;
+    height: 0.6rem;
+    background-image: linear-gradient(90deg,
+    #37e06f 0%,
+    #31d69a 100%),
+    linear-gradient(
+            #3bacfe,
+            #3bacfe);
+    box-shadow: 0 0.04rem 0.2rem 0 rgba(55, 223, 116, 0.75);
+    border-radius: 0.25rem;
+    font-size: 0.2rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.52rem;
+}
+.body1  .blank{
+    width: 100%;
+    height: 7rem;
+    background-color: #f8fcff;
+    position: relative;
+    z-index: 999;
+ }
+.body1{
+    display: none;
+}
+/*.body2{*/
+/*    display: none;*/
+/*}*/
+.body2 .tro{
+    box-sizing: border-box;
+    padding: 0.5rem 0.22rem;
+    /*background-color: #EF8996;*/
+    width: 100%;
+}
+.body2 .tro .item{
+    /*background-color: #EF8996;*/
+    height: 2.1rem;
+    border-bottom: 0.01rem solid #d8dfe3;
+}
+.item {
+    position: relative;
+}
+.tro .pic{
+    display: block;
+    width: 1.74rem;
+    height: 1.74rem;
+    background-color: #FFFFFF;
+    margin-left: 0.78rem;
+    float: left;
+}
+.tro .check img{
+    width: 0.6rem;
+    height: 0.6rem;
+    position: absolute;
+    bottom: 0.9rem;
+    left: 0.2rem;
+}
+.tro .uncheck img{
+    width: 0.3rem;
+    height: 0.3rem;
+    position: absolute;
+    bottom: 1.1rem;
+    left: 0.34rem;
+}
+.tro .pic img{
+    width: 1.4rem;
+    height: 1.4rem;
+    padding: 0.2rem;
+}
+.tro .name{
+    width: 4rem;
+    padding-top: 0.45rem;
+    padding-left: 0.24rem;
+    float: left;
+    /*background-color: #41b2fc;*/
+}
+.tro .name .nameRight{
+    float: right;
+}
+.nameRight .abs img{
+    position: relative;
+    right: 0.1rem;
+}
+.tro  .name  h2{
+    font-size: 0.3rem;
+    color: rgba(0,0,0,0.6);
+    float: left;
+}
+.tro .item h3{
+    color: #8e9397;
+    opacity: 0.8;
+    font-size: 0.26rem;
+    /*display: block;*/
+    padding-left: 0.24rem;
+    float: left;
+}
+/*.tro .name .abs img{*/
+/*    width: auto;*/
+/*    height: auto;*/
+/*}*/
+.tro .name .add{
+    width: 0.34rem;
+    height: 0.34rem;
+    background-color: #36a8fe;
+    box-shadow: 0 0.05rem 0.12rem 0
+    rgba(59, 172, 254, 0.43);
+    border-radius: 50%;
+    margin-left: 0.1rem;
+}
+.tro .name i{
+    width: 0.34rem;
+    height: 0.34rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+}
+.tro .name span{
+    font-size: 0.26rem;
+    color: #36a8fe;
+    float: left;
+    font-weight: bold;
+}
+.tro .name .add span{
+    font-size: 0.22rem;
+    color: #FFFFFF;
+    font-style: normal;
+}
+.body2 .bottom{
+    width: 100%;
+    height: 1.14rem;
+    background-color: #f1faff;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 0.22rem 0.22rem 0.22rem 0.75rem;
+}
+.body2 > .bottom > a{
+    width: 3.5rem;
+    height: 0.6rem;
+    margin-top: 0.08rem;
+    background-image: linear-gradient(90deg,
+    #37e06f 0%,
+    #31d69a 100%),
+    linear-gradient(
+            #3bacfe,
+            #3bacfe);
+    box-shadow: 0 0.04rem 0.2rem 0 rgba(55, 223, 116, 0.75);
+    border-radius: 0.25rem;
+    font-size: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
+.body2 > .bottom > .num {
+    /*float: left;*/
+}
+.body2 > .bottom > .num {
+    color: #3bacfe;
+    opacity: 0.6;
+    font-size: 0.24rem;
+}
+.bottom .allTotal img{
+    width: 0.3rem;
+    height: 0.3rem;
+    float: left;
+    position: absolute;
+    left: 0.25rem;
+    bottom: 0.48rem;
+}
+.bottom .allTotal span{
+    color: #3bacfe;
+    font-size: 0.24rem;
+    float: left;
+    position: absolute;
+    left: 0.14rem;
+    bottom: 0.03rem;
+}
+/*.body2 > .bottom > .num > span::before{*/
+/*    background-color: #44b5ff;*/
+/*    box-shadow: 0 0.02rem 0.05rem 0 rgba(54, 214, 129, 0.43);*/
+/*    content: "";*/
+/*    width: 0.06rem;*/
+/*    height: 0.06rem;*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*    right: 1.3rem;*/
+/*    bottom: 0.12rem;*/
+/*}*/
+.body2 > .bottom > i{
+    color: #36a8fe;
+    font-size: 0.36rem;
+    font-style: normal;
+    font-weight: bold;
+}
+.body2 > .bottom > .fare {
+    /*float: left;*/
+}
+.body2 > .bottom .fare ,.body2 > .bottom .discount{
+    font-size: 0.2rem;
+    color: #3bacfe;
+    opacity: 0.6;
+    margin-right: 0.2rem;
+}

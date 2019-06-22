@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1194452_q2kujt4b40n.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <title>首页</title>
+</head>
+<body>
+<header>
+    刘奇
+</header>
+<div class="search">
+    <span>太原
+    <i class="iconfont icon-xiangxia"></i>
+    </span>
+    <a href="">
+        <p>搜索您需要的服务 商品</p>
+    </a>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="banner swiper-slide" style="width: 100%; height: 3.07rem;">
+            <a href=""><img src="./image/sub1.jpg" alt=""></a>
+        </div>
+        <div class="banner swiper-slide" style="width: 100%; height: 3.07rem;">
+            <a href=""><img src="./image/changban2.jpg" alt=""></a>
+        </div>
+        <div class="banner swiper-slide" style="width: 100%; height: 3.07rem;">
+            <a href=""><img src="./image/zhigengniao.jpg" alt=""></a>
+        </div>
+        <div class="banner swiper-slide" style="width: 100%; height: 3.07rem;">
+            <a href=""><img src="./image/changban1.jpg" alt=""></a>
+        </div>
+        <div class="banner swiper-slide" style="width: 100%; height: 3.07rem;">
+            <a href=""><img src="./image/skatesun.png" alt=""></a>
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+<!--    <div class="swiper-pagination"></div>-->
+    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+</div>
+<ul class="category">
+    <li><a href="list.html">
+        <div><img src="./image/l1.png" alt="">
+            <p>长板</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l2.png" alt="">
+            <p>舞板</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l3.png" alt="">
+            <p>刷街长板</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l4.png" alt="">
+            <p>双翘板</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l5.png" alt="">
+            <p>滑板轮子</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l6.png" alt="">
+            <p style="width: 1.23rem">下水道疏通</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l7.png" alt="">
+            <p>龙头维修</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="./image/l8.png" alt="">
+            <p>其他</p>
+        </div>
+    </a></li>
+    <li><a href="">
+        <div><img src="" alt="">
+            <p>me!</p>
+        </div>
+    </a></li>
+</ul>
+<footer>
+    <a href="" class="hot" style="opacity: 1"><img src="./image/sy.png" alt="">首页</a>
+    <a href=""><img src="./image/store.png" alt="">商场</a>
+    <a href=""><img src="./image/rz.png" alt="">入驻</a>
+    <a href=""><img src="./image/order.png" alt="">订单</a>
+    <a href="trolley.html"><img src="./image/personal.png" alt="">我的</a>
+</footer>
+<script src="./js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container',{
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            renderBullet: function (index, className) {
+                return '<span class="' + className + '">' +  '</span>';
+            },
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+</body>
+</html>
